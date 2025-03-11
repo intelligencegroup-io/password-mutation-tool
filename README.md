@@ -4,6 +4,29 @@
 
 This tool is designed for **penetration testers, security researchers, and ethical hackers** who need to generate **custom password lists for targeted penetration tests**. By leveraging **Hashcat rule files**, the tool applies advanced transformations to user-provided keywords, creating **highly realistic password variations** that match an organisation’s or individual’s likely password choices.
 
+## 🎯 Use Case: Targeted Penetration Testing
+
+This tool is perfect for **red team engagements and security audits**, allowing testers to generate **highly realistic** password lists for specific targets.
+
+### **Example Scenario**
+
+A penetration tester is assessing an organisation named **"AcmeCorp"**. Instead of using a generic wordlist, they can:
+
+```bash
+Enter keywords (comma-separated): AcmeCorp
+```
+
+The tool applies **real-world password transformations**, generating:
+
+```
+AcmeCorp!
+Acm3Corp
+Acme2024#
+Acmecorp2024
+```
+
+This makes **password attacks more efficient** by focusing on **high-probability guesses** rather than brute-force methods.
+
 Unlike traditional wordlist generators, this tool:
 
 - 🚀 **Runs entirely in memory** for maximum speed.
@@ -40,28 +63,6 @@ Unlike traditional wordlist generators, this tool:
 ✅ **Supports Any Hashcat Rule Files** – Works with custom `.rule` files.\
 ✅ **Optimised for Large Wordlists** – Handles **millions of passwords efficiently**.
 
-## 🎯 Use Case: Targeted Penetration Testing
-
-This tool is perfect for **red team engagements and security audits**, allowing testers to generate **highly realistic** password lists for specific targets.
-
-### **Example Scenario**
-
-A penetration tester is assessing an organisation named **"AcmeCorp"**. Instead of using a generic wordlist, they can:
-
-```bash
-Enter keywords (comma-separated): AcmeCorp
-```
-
-The tool applies **real-world password transformations**, generating:
-
-```
-AcmeCorp!
-Acm3Corp
-Acme2024#
-Acmecorp2024
-```
-
-This makes **password attacks more efficient** by focusing on **high-probability guesses** rather than brute-force methods.
 
 ## 🛠️ Installation & Setup
 

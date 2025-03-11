@@ -49,7 +49,7 @@ This tool is perfect for **red team engagements and security audits**, allowing 
 A penetration tester is assessing an organisation named **"AcmeCorp"**. Instead of using a generic wordlist, they can:
 
 ```bash
-Enter keywords (comma-separated): AcmeCorp, acmecorp123, Acme2024, admin, welcome
+Enter keywords (comma-separated): AcmeCorp
 ```
 
 The tool applies **real-world password transformations**, generating:
@@ -58,8 +58,6 @@ The tool applies **real-world password transformations**, generating:
 AcmeCorp!
 Acm3Corp
 Acme2024#
-admin123
-Welcome2024!
 Acmecorp2024
 ```
 
@@ -79,8 +77,7 @@ cd password-mutation-tool
 To avoid conflicts with system packages, set up a virtual environment:
 
 ```bash
-python3 -m venv myenv
-source myenv/bin/activate  # On Windows use: myenv\Scripts\activate
+python3 -m venv myenv && source myenv/bin/activate  # On Windows use: myenv\Scripts\activate
 ```
 
 ### 3️⃣ Install Dependencies
@@ -110,7 +107,7 @@ python3 generate_passwords.py
 ### Example Usage
 
 ```bash
-Enter keywords (comma-separated): password, admin, letmein
+Enter keywords (comma-separated): password
 ```
 
 💡 **Tip:** The more **context-aware** your keywords, the better the results!

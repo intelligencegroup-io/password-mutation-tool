@@ -1,0 +1,2 @@
+*.rule filter=lfs diff=lfs merge=lfs -text
+rules/*.rule filter=lfs diff=lfs merge=lfs -text

@@ -28,32 +28,14 @@ AcmeC0rp!
 
 This approach **increases password cracking efficiency** by focusing on **high-probability guesses**, reducing the need for broad brute-force attacks.
 
-## 🔧 How It Works
-
-### 1️⃣ Input
-
-- The user provides **targeted keywords** (e.g., company names, internal abbreviations, project names, industry terms).
-- The script scans the `rules/` directory for **Hashcat rule files** (`.rule`), which contain **real-world password mutation patterns**.
-
-### 2️⃣ Processing
-
-- Each keyword is **transformed using Hashcat rules**, mimicking how real users create passwords.
-- The generated variations are stored **in memory** for rapid processing.
-- Invalid or unsupported rules are automatically skipped.
-
-### 3️⃣ Sorting & Output
-
-- The tool **deduplicates** passwords and sorts them efficiently with a **progress bar**.
-- The final **optimised password list** is saved as `generated_passwords_YYYY-MM-DD_HH-MM-SS.txt`.
-- The tool provides an estimate of **file size and total unique passwords** before exiting.
-
 ## 📌 Features
 
-✅ **Highly Targeted Wordlist Generation** – Uses company-specific keywords for **more accurate password guesses**.\
-✅ **Optimised for Hash Cracking** – Prioritises **realistic, high-probability mutations** over brute-force approaches.\
-✅ **Real-Time Processing** – Runs entirely in **RAM** for maximum speed.\
-✅ **Automatic Deduplication** – Ensures a clean and optimised wordlist.\
-✅ **Supports Any Hashcat Rule Files** – Works with **custom or pre-existing** `.rule` files.\
+✅ **Supports Compressed Rule Files** – The tool automatically extracts and processes `.7z` compressed Hashcat rules.  
+✅ **Highly Targeted Wordlist Generation** – Uses company-specific keywords for **more accurate password guesses**.  
+✅ **Optimised for Hash Cracking** – Prioritises **realistic, high-probability mutations** over brute-force approaches.  
+✅ **Real-Time Processing** – Runs entirely in **RAM** for maximum speed.  
+✅ **Automatic Deduplication** – Ensures a clean and optimised wordlist.  
+✅ **Supports Any Hashcat Rule Files** – Works with **custom or pre-existing** `.rule` files.  
 ✅ **Efficient Large-Scale Processing** – Handles **millions of password variations** efficiently.
 
 ## 🛠️ Installation & Setup
@@ -132,7 +114,7 @@ Sorting 42,465,809 unique passwords...
 
 ### **Why This Beats Traditional Wordlist Generators**
 
-❌ **Traditional wordlists**: Generic and require excessive brute force attempts.\
+❌ **Traditional wordlists**: Generic and require excessive brute force attempts.  
 ✅ **This tool**: Uses **targeted mutations** to create **more accurate** guesses, reducing cracking time.
 
 ### **Handling Large Datasets**

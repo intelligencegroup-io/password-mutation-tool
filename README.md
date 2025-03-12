@@ -1,16 +1,16 @@
-# 🔐 Password Mutation & Generation Tool
+# 🔐 Targeted Password List Generator
 
 ## Overview
 
-This tool is designed for **penetration testers, security researchers, and ethical hackers** who need to generate **custom password lists for targeted penetration tests**. By leveraging **Hashcat rule files**, the tool applies advanced transformations to user-provided keywords, creating **highly realistic password variations** that match an organisation’s or individual’s likely password choices.
+This tool is designed for **red teamers, penetration testers, and security researchers** who need to generate **highly targeted password lists for password hash cracking**. By leveraging **Hashcat rule files**, the tool applies advanced transformations to user-provided keywords, creating **realistic password variations** that align with an organisation's password patterns.
 
-## 🎯 Use Case: Targeted Penetration Testing
+## 🎯 Use Case: Password Hash Cracking in Red Team Engagements
 
-This tool is perfect for **red team engagements and security audits**, allowing testers to generate **highly realistic** password lists for specific targets.
+When a red team captures a **password hash**, they can use this tool to generate **context-aware, high-probability password guesses** based on the target organisation’s naming conventions, culture, and password tendencies.
 
 ### **Example Scenario**
 
-A penetration tester is assessing an organisation named **"AcmeCorp"**. Instead of using a generic wordlist, they can:
+A penetration tester has captured a hash from an organisation named **"AcmeCorp"**. Instead of relying on generic wordlists, they can generate tailored variations:
 
 ```bash
 Enter keywords (comma-separated): AcmeCorp
@@ -23,46 +23,38 @@ AcmeCorp!
 Acm3Corp
 Acme2024#
 Acmecorp2024
+AcmeC0rp!
 ```
 
-This makes **password attacks more efficient** by focusing on **high-probability guesses** rather than brute-force methods.
-
-Unlike traditional wordlist generators, this tool:
-
-- 🚀 **Runs entirely in memory** for maximum speed.
-- 🎯 **Optimised for targeted attacks** by using real-world password mutation rules.
-- 🔄 **Automatically removes duplicates** during processing.
-- 📊 **Provides real-time progress updates** for both rule processing and sorting.
-- 💾 **Saves a final sorted wordlist**, optimised for password cracking and security assessments.
+This approach **increases password cracking efficiency** by focusing on **high-probability guesses**, reducing the need for broad brute-force attacks.
 
 ## 🔧 How It Works
 
 ### 1️⃣ Input
 
-- The user provides **targeted keywords** (e.g., company names, usernames, common passwords).
+- The user provides **targeted keywords** (e.g., company names, internal abbreviations, project names, industry terms).
 - The script scans the `rules/` directory for **Hashcat rule files** (`.rule`), which contain **real-world password mutation patterns**.
 
 ### 2️⃣ Processing
 
 - Each keyword is **transformed using Hashcat rules**, mimicking how real users create passwords.
-- The generated variations are stored **in memory** to ensure high-speed execution.
+- The generated variations are stored **in memory** for rapid processing.
 - Invalid or unsupported rules are automatically skipped.
 
 ### 3️⃣ Sorting & Output
 
 - The tool **deduplicates** passwords and sorts them efficiently with a **progress bar**.
-- The final **sorted and unique** password list is saved as `generated_passwords_YYYY-MM-DD_HH-MM-SS.txt`.
-- The tool estimates **file size and total unique passwords** before exiting.
+- The final **optimised password list** is saved as `generated_passwords_YYYY-MM-DD_HH-MM-SS.txt`.
+- The tool provides an estimate of **file size and total unique passwords** before exiting.
 
 ## 📌 Features
 
-✅ **High-Speed Execution** – Runs entirely in RAM to avoid slow disk writes.\
-✅ **Targeted Wordlist Generation** – Uses real-world mutation rules for **maximum effectiveness**.\
-✅ **Real-Time Progress Tracking** – Live feedback during generation, sorting, and saving.\
-✅ **Automatic Deduplication** – Eliminates redundant entries **before sorting**.\
-✅ **Supports Any Hashcat Rule Files** – Works with custom `.rule` files.\
-✅ **Optimised for Large Wordlists** – Handles **millions of passwords efficiently**.
-
+✅ **Highly Targeted Wordlist Generation** – Uses company-specific keywords for **more accurate password guesses**.\
+✅ **Optimised for Hash Cracking** – Prioritises **realistic, high-probability mutations** over brute-force approaches.\
+✅ **Real-Time Processing** – Runs entirely in **RAM** for maximum speed.\
+✅ **Automatic Deduplication** – Ensures a clean and optimised wordlist.\
+✅ **Supports Any Hashcat Rule Files** – Works with **custom or pre-existing** `.rule` files.\
+✅ **Efficient Large-Scale Processing** – Handles **millions of password variations** efficiently.
 
 ## 🛠️ Installation & Setup
 
@@ -75,8 +67,6 @@ cd password-mutation-tool
 
 ### 2️⃣ Set Up a Virtual Environment
 
-To avoid conflicts with system packages, set up a virtual environment:
-
 ```bash
 python3 -m venv myenv && source myenv/bin/activate  # On Windows use: myenv\Scripts\activate
 ```
@@ -88,8 +78,6 @@ pip install -r requirements.txt
 ```
 
 ### 4️⃣ Install Hashcat
-
-Ensure Hashcat is installed:
 
 ```bash
 sudo apt install hashcat  # Linux
@@ -108,29 +96,27 @@ python3 generate_passwords.py
 ### Example Usage
 
 ```bash
-Enter keywords (comma-separated): password
+Enter keywords (comma-separated): AcmeCorp, FinanceDept
 ```
 
-💡 **Tip:** The more **context-aware** your keywords, the better the results!
+💡 **Tip:** Use company names, department names, and internal project names to generate highly effective password lists.
 
 ## 📜 Example Output
 
 ```
-🔹 Processing keyword: password with rule file: best64.rule
-✅ Generated 1,234 variations for password
-  ➜ Password!
-  ➜ p@ssword
-  ➜ P@ssw0rd
-  ➜ passw0rd123
-  ➜ password2024...
+🔹 Processing keyword: AcmeCorp with rule file: best64.rule
+✅ Generated 1,234 variations for AcmeCorp
+  ➜ AcmeCorp!
+  ➜ Acm3Corp
+  ➜ Acme2024#
+  ➜ Acmecorp2024...
 
-🔹 Processing keyword: password with rule file: toggles3.rule
-✅ Generated 3,567 variations for password
-  ➜ Password
-  ➜ pAsSwOrD
-  ➜ PassWord!
-  ➜ PASSWORD123
-  ➜ password#1...
+🔹 Processing keyword: FinanceDept with rule file: toggles3.rule
+✅ Generated 3,567 variations for FinanceDept
+  ➜ FinanceDept
+  ➜ F1nanceDept
+  ➜ FinanceD3pt!
+  ➜ FinanceDept#1...
 
 Sorting 42,465,809 unique passwords...
 ✅ Sorted and saved to generated_passwords_2024-06-01_12-30-45.txt
@@ -138,27 +124,27 @@ Sorting 42,465,809 unique passwords...
 
 ## 🔬 Technical Details
 
-### **Efficiency Optimisations**
+### **Optimised for Performance**
 
-- **Python `set` for deduplication**: Ensures **only unique passwords** are stored.  
-- **Sorting with tqdm**: Provides a **real-time progress bar** during sorting.  
-- **Batch writing**: Reduces disk I/O for faster performance.  
+- **Python `set` for deduplication**: Ensures only **unique** passwords are stored.
+- **Sorting with tqdm**: Provides **real-time progress feedback**.
+- **Batch writing**: Reduces disk I/O, improving speed.
 
-### **Why This is Faster Than Traditional Methods**
+### **Why This Beats Traditional Wordlist Generators**
 
-❌ **Inefficient Approach**: Writing results to a file and sorting later is **slow & disk-heavy**.\
-✅ **Optimised Approach**: Store in **memory (`set`)**, then sort **only unique values** at the end.
+❌ **Traditional wordlists**: Generic and require excessive brute force attempts.\
+✅ **This tool**: Uses **targeted mutations** to create **more accurate** guesses, reducing cracking time.
 
 ### **Handling Large Datasets**
 
-- This tool efficiently processes **tens of millions of entries** in RAM.
-- For **extreme-scale wordlists**, use a machine with **16GB+ RAM**.
+- Processes **tens of millions** of password variations efficiently.
+- For extreme-scale wordlists, a system with **16GB+ RAM** is recommended.
 
 ## 🚀 Future Enhancements
 
-- Multi-threading for **parallel Hashcat execution**.
-- GPU acceleration for **even faster password generation**.
-- **Custom rule selection** based on **targeted attack profiles**.
+- **Parallel Processing** – Multi-threading for **faster password generation**.
+- **GPU Acceleration** – Offload computations for **higher speed**.
+- **Custom Rule Selection** – Choose specific rule files based on attack scenarios.
 
 ## 🏆 Contributing
 
@@ -166,8 +152,8 @@ Want to improve this tool? Fork the repo and submit a PR! Bug reports & feature 
 
 ## ⚠️ Disclaimer
 
-This tool is for **ethical hacking & security research** only. Unauthorised use against systems without permission is illegal. The developers are **not responsible for misuse**.
+This tool is intended for **ethical security testing** only. Unauthorised use against systems without permission is **illegal**. The developers are **not responsible for misuse**.
 
 ---
 
-💡 **Built for targeted penetration testing, optimised for speed.** Happy cracking! 🚀
+💡 **Designed for red team professionals, optimised for password hash cracking.** Happy cracking! 🚀

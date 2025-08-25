@@ -78,7 +78,7 @@ python3 generate_passwords.py
 ### Example Usage
 
 ```bash
-Enter keywords (comma-separated): AcmeCorp, FinanceDept
+Enter keywords (comma-separated): AcmeCorp,FinanceDept
 ```
 
 💡 **Tip:** Use company names, department names, and internal project names to generate highly effective password lists.
